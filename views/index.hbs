@@ -11,8 +11,40 @@
 </head>
 
 <body style="font-family: Varela Round">
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+      <ul class="uk-navbar-nav">
+        <li class="uk-active"><a href="/">ArticlesApp</a></li>
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+        <li>
+          <a href="#" class="uk-active">Parent</a>
+          <div class="uk-navbar-dropdown">
+            <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li class="uk-active"><a href="#"><span class="uk-margin-small-right uk-icon" uk-icon="file-edit"></span>Edit Profile</a></li>
+              <li><a href="#"><span class="uk-margin-small-right uk-icon" uk-icon="sign-out"></span>Logout</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="">
     <p>Welcome !!!!</p>
+  </div>
+
+  <div class="">
+    <ul class="">
+      {{#each articles}}
+        <li>
+          <a href="/article/{{this._id}}">{{this.title}}</a>
+        </li>
+      {{/each}}
+    </ul>
   </div>
 </body>
 <script src="/js/uikit.min.js"></script>

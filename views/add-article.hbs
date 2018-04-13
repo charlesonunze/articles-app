@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Articles</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/uikit.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+</head>
+
+<body style="font-family: Varela Round">
+  <div class="">
+    <p>Articles</p>
+  </div>
+  <hr>
+  <div class="uk-container">
+
+    <form action="/articles/add" method="post">
+      <fieldset class="uk-fieldset">
+
+        <legend class="uk-legend">Add Article</legend>
+
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="Title" name="title">
+        </div>
+
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="Author" name="author">
+        </div>
+
+        <div class="uk-margin">
+          <textarea class="uk-textarea" rows="5" name="body" maxlength="1000" placeholder="Write your article..." autofocus></textarea>
+        </div>
+
+        <button type="submit">post article</button>
+      </fieldset>
+    </form>
+
+  </div>
+</body>
+<script src="/js/uikit.min.js"></script>
+<script src="/js/uikit-icons.min.js"></script>
+
+</html>

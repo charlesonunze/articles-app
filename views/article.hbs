@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Articles</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/uikit.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+</head>
+
+<body style="font-family: Varela Round">
+
+  <div class="">
+    <p>Articles</p>
+  </div>
+  <hr>
+  <div class="uk-container">
+    <p> <strong>{{article.title}}</strong></p>
+    <p> <strong>{{article.author}}</strong></p>
+    <p>{{article.body}}</p>
+
+    <div class="">
+      <a class="uk-button uk-button-danger" href="#modal-center" uk-toggle>delete article</a>
+
+      <a href="/article/edit/{{article._id}}" class="uk-button uk-button-primary">edit article</a>
+
+      <div id="modal-center" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+          <button class="uk-modal-close-default" type="button" uk-close></button>
+          <p>If you delete this article, it cannot be recovered.</p>
+
+          <a class="uk-button uk-button-primary">cancel</a>
+          <form class="" action="/article/{{article._id}}" method="post">
+            <input type="submit" name="" value="delete" class="uk-button uk-button-danger">
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script src="/js/uikit.min.js"></script>
+<script src="/js/uikit-icons.min.js"></script>
+
+</html>
