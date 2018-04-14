@@ -21,6 +21,9 @@
     <div class="uk-navbar-right">
       <ul class="uk-navbar-nav">
         <li>
+          <a href="/articles/add">add article</a>
+        </li>
+        <li>
           <a href="#" class="uk-active">Parent</a>
           <div class="uk-navbar-dropdown">
             <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -37,6 +40,14 @@
     <p>Welcome !!!!</p>
   </div>
 
+  {{#if success_msg}}
+    <div class="uk-alert-success" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>{{success_msg}}</p>
+    </div>
+  {{/if}}
+
+
   <div class="">
     <ul class="">
       {{#each articles}}
@@ -46,6 +57,7 @@
       {{/each}}
     </ul>
   </div>
+
 </body>
 <script src="/js/uikit.min.js"></script>
 <script src="/js/uikit-icons.min.js"></script>

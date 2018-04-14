@@ -1,10 +1,14 @@
-const express = require('express');
-// const mongodb = require('mongodb');
-const bcrypt = require('bcryptjs');
-const bodyParser = require('body-parser');
 const _ = require('lodash');
 const hbs = require('hbs');
 const path = require('path');
+const bcrypt = require('bcryptjs');
+const express = require('express');
+const session = require('express-session');
+const flash = require('connect-flash');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
+// const messages = require('express-messages');
 
 const {ObjectID} = require('mongodb');
 const {mongoose} = require('./db/mongoose');
@@ -20,8 +24,25 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/', (req, res) => {
+app.use(cookieParser());
+app.use(session({
+  cookie: {
+    maxAge: 60000
+  },
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(flash());
 
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  // res.locals.error = req.flash('error');
+  next();
+});
+
+app.get('/', (req, res) => {
   Article
     .find({})
     .then((articles) => {
@@ -29,7 +50,6 @@ app.get('/', (req, res) => {
         return console.log(`ID not found`);
       res.render('index', {articles});
     });
-
 });
 
 app.get('/articles/add', (req, res) => {
@@ -44,8 +64,8 @@ app.post('/articles/add', (req, res) => {
   article
     .save()
     .then((doc) => {
+      req.flash('success_msg', 'new article added');
       res.redirect('/');
-      console.log(doc);
     })
     .catch((e) => {
       res
@@ -110,7 +130,6 @@ app.post('/article/edit/:id', (req, res) => {
         .send(e);
     });
 });
-
 // delete
 app.post('/article/:id', (req, res) => {
 
@@ -121,8 +140,8 @@ app.post('/article/:id', (req, res) => {
         return res
           .status(404)
           .send({Error: 'Page not found'});
-      
-      res.redirect('/', 301);
+      req.flash('success_msg', 'article deleted');
+      res.redirect(301, '/');
     })
     .catch((e) => {
       res
