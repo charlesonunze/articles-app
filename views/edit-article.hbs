@@ -16,7 +16,6 @@
   </div>
   <hr>
   <div class="uk-container">
-
     <form action="/article/edit/{{article._id}}" method="post">
       <fieldset class="uk-fieldset">
 
@@ -27,17 +26,12 @@
         </div>
 
         <div class="uk-margin">
-          <input class="uk-input" type="text" placeholder="Author" name="author" value="{{article.author}}">
-        </div>
-
-        <div class="uk-margin">
           <textarea class="uk-textarea" rows="5" name="body" maxlength="1000" autofocus>{{article.body}}</textarea>
         </div>
 
         <button type="submit">submit</button>
       </fieldset>
     </form>
-
   </div>
 </body>
 <script src="/js/uikit.min.js"></script>

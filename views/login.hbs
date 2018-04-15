@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Twitter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/uikit.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+</head>
+
+<body style="font-family: Varela Round">
+  <div class="">
+    <p>Twitter Clone</p>
+  </div>
+
+  <hr>
+
+  <div class="uk-container">
+    <p>Log in to Twitter</p>
+    <form class="uk-form-controls" action="/users/login" method="post">
+
+      {{#if message}}
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>{{message}}</p>
+        </div>
+      {{/if}}
+
+      {{#if error}}
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>{{error}}</p>
+        </div>
+      {{/if}}
+
+      {{#if success_msg}}
+        <div class="uk-alert-success" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>{{success_msg}}</p>
+        </div>
+      {{/if}}
+
+      {{#if error_msg}}
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>{{error_msg}}</p>
+        </div>
+      {{/if}}
+
+      <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+          <span class="uk-form-icon" uk-icon="icon: user"></span>
+          <input class="uk-input" type="text" name="username">
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+          <span class="uk-form-icon" uk-icon="icon: lock"></span>
+          <input class="uk-input" type="text" name="password">
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+          <input class="uk-input" type="submit" value="login">
+        </div>
+      </div>
+
+    </form>
+    <p><small>or</small></p>
+    <button type="button" name="button">create new account</button>
+  </div>
+</body>
+<script src="/js/uikit.min.js"></script>
+<script src="/js/uikit-icons.min.js"></script>
+</script>
+
+</html>
