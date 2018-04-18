@@ -16,17 +16,17 @@
   </div>
   <hr>
   <div class="uk-container">
-    <form action="/article/edit/{{article._id}}" method="post">
+    <form action="/article/edit/<%= article.title %>" method="post">
       <fieldset class="uk-fieldset">
 
         <legend class="uk-legend">Edit Article</legend>
 
         <div class="uk-margin">
-          <input class="uk-input" type="text" name="title" value="{{article.title}}">
+          <input class="uk-input" type="text" name="title" value="<%= article.title %>">
         </div>
 
         <div class="uk-margin">
-          <textarea class="uk-textarea" rows="5" name="body" maxlength="1000" autofocus>{{article.body}}</textarea>
+          <textarea class="uk-textarea" rows="5" name="body" maxlength="1000" autofocus><%= article.body %></textarea>
         </div>
 
         <button type="submit">submit</button>

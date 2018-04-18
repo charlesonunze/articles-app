@@ -1,52 +1,51 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const _ = require('lodash');
-const passport = require('passport');
+const bcrypt = require("bcryptjs");
+const _ = require("lodash");
+const passport = require("passport");
 
-const {User} = require('../server/models/user');
+const User = require("../server/models/user");
 
 // signup
 router
-  .get('/register', (req, res) => {
-    res.render('signup');
+  .get("/register", (req, res) => {
+    res.render("signup");
   })
-  .post('/register', (req, res) => {
-    let body = _.pick(req.body, ['username', 'password']);
+  .post("/register", (req, res) => {
+    let body = _.pick(req.body, ["username", "password"]);
 
-    const user = new User({username: body.username, password: body.password});
+    const user = new User({ username: body.username, password: body.password });
 
     user
       .save()
-      .then((doc) => {
-        req.flash('success_msg', 'account created, you can now log in');
-        res.redirect('/users/login');
+      .then(doc => {
+        req.flash("success", "account created, you can now log in");
+        res.redirect("/users/login");
         console.log(doc);
       })
-      .catch((e) => {
-        res
-          .status(400)
-          .send(e);
+      .catch(e => {
+        res.status(400).send(e);
       });
   });
 
 // login
 router
-  .get('/login', (req, res) => {
-    res.render('login');
+  .get("/login", (req, res) => {
+    res.render("login");
   })
-  .post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/users/login',
+  .post("/login", (req, res, next) => {
+    passport.authenticate("local", {
+      successRedirect: "/",
+      failureRedirect: "/users/login",
       failureFlash: true
     })(req, res, next);
   });
 
 // logout
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
-  req.flash('success_msg', 'you are now loggged out');
-  res.redirect('/users/login');
+  req.flash("success", "you are now logged out");
+  res.redirect("/users/login");
 });
+
 module.exports = router;

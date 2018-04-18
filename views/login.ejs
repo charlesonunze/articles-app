@@ -21,33 +21,26 @@
     <p>Log in to Twitter</p>
     <form class="uk-form-controls" action="/users/login" method="post">
 
-      {{#if message}}
-        <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p>{{message}}</p>
-        </div>
-      {{/if}}
-
-      {{#if error}}
-        <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p>{{error}}</p>
-        </div>
-      {{/if}}
-
-      {{#if success_msg}}
+      <% if (success.length > 0) { %>
         <div class="uk-alert-success" uk-alert>
           <a class="uk-alert-close" uk-close></a>
-          <p>{{success_msg}}</p>
+          <p><%= success %></p>
         </div>
-      {{/if}}
+      <% } %>
 
-      {{#if error_msg}}
+      <% if (message.length > 0) { %>
+        <div class="uk-alert-info" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p><%= message %></p>
+        </div>
+      <% } %>
+
+      <% if (error.length > 0) { %>
         <div class="uk-alert-danger" uk-alert>
           <a class="uk-alert-close" uk-close></a>
-          <p>{{error_msg}}</p>
+          <p><%= error %></p>
         </div>
-      {{/if}}
+      <% } %>
 
       <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">

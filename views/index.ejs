@@ -20,19 +20,19 @@
 
     <div class="uk-navbar-right">
       <ul class="uk-navbar-nav">
-        {{#if user}}
+        <% if (user) { %>
           <li class="uk-active">
             <a href="/article/add">add article</a>
           </li>
           <li class="uk-active">
-            <a href="#">{{user.username}}</a>
+            <a href="#"><%= user.username %></a>
             <div class="uk-navbar-dropdown">
               <ul class="uk-nav uk-navbar-dropdown-nav">
                 <li><a href="/users/logout"><span class="uk-margin-small-right uk-icon" uk-icon="sign-out"></span>Logout</a></li>
               </ul>
             </div>
           </li>
-        {{else}}
+        <% } else { %>
           <li>
             <div>
               <div class="uk-button-group" style="padding-top: 8px;">
@@ -41,51 +41,23 @@
               </div>
             </div>
           </li>
-        {{/if}}
+        <% } %>
       </ul>
     </div>
   </nav>
 
-  <div class="">
-    <p>Welcome !!!!</p>
-  </div>
-
-  {{#if message}}
-    <div class="uk-alert-danger" uk-alert>
-      <a class="uk-alert-close" uk-close></a>
-      <p>{{message}}</p>
-    </div>
-  {{/if}}
-
-  {{#if error}}
-    <div class="uk-alert-danger" uk-alert>
-      <a class="uk-alert-close" uk-close></a>
-      <p>{{error}}</p>
-    </div>
-  {{/if}}
-
-  {{#if success_msg}}
-    <div class="uk-alert-success" uk-alert>
-      <a class="uk-alert-close" uk-close></a>
-      <p>{{success_msg}}</p>
-    </div>
-  {{/if}}
-
-  {{#if error_msg}}
-    <div class="uk-alert-danger" uk-alert>
-      <a class="uk-alert-close" uk-close></a>
-      <p>{{error_msg}}</p>
-    </div>
-  {{/if}}
-
-  <div class="">
-    <ul class="">
-      {{#each articles}}
+  <div>
+    <% if (articles.length === 0) {%>
+      <h1>No articles yet...</h1>    
+    <% } else {%>
+      <ul>
+      <% articles.forEach(function(article){ %>
         <li>
-          <a href="/article/{{this._id}}">{{this.title}}</a>
+          <a href="/article/<%= article._id %>"><%= article.title %></a>
         </li>
-      {{/each}}
+      <% }); %>
     </ul>
+    <% } %>
   </div>
 
 </body>
