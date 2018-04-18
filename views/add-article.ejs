@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Articles</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/uikit.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-</head>
+<% include ./partials/head %>
 
 <body style="font-family: Varela Round">
-  <div class="">
-    <p>Articles</p>
-  </div>
-  <hr>
+  <% include ./partials/nav %>
+
+  <br>
+
   <div class="uk-container">
     <form action="/article/add" method="post">
       <fieldset class="uk-fieldset">
@@ -29,12 +21,10 @@
           <textarea class="uk-textarea" rows="5" name="body" maxlength="1000" placeholder="Write your article..." autofocus></textarea>
         </div>
 
-        <button type="submit">post article</button>
+        <button type="submit" class="uk-button uk-button-primary">post article</button>
       </fieldset>
     </form>
   </div>
+  <% include ./partials/scripts %>
 </body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/uikit-icons.min.js"></script>
-
 </html>

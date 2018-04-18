@@ -1,18 +1,13 @@
 html, body {
-  background-color: #23232d;
-  height: 500px;
+  height: 100%;
+  font-family: "Varela Round";
+  background-color: #eee;
 }
 
-.uk-container {
-  text-align: center;
-  padding: 20px 50px;
-  background-color: #2c2c36;
+nav {
+  margin-bottom: 15px;
 }
 
-.uk-input {
-  background-color: #23232d;
-}
-
-.uk-input:focus {
-  background-color: #23232d;
+.uk-card {
+  margin-bottom: 15px;
 }

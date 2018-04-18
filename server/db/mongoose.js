@@ -6,7 +6,7 @@ mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ArticlesApp")
   .then(
     () => {
-      console.log(`connected to database...`);
+      console.log(`connected to database.....`);
     },
     e => {
       console.log("Error", e);

@@ -16,28 +16,7 @@
   <div class="uk-container">
     <p>Create a new account</p>
     <form class="uk-form-controls" action="/users/register" method="post">
-
-      
-      <% if (success.length > 0) { %>
-        <div class="uk-alert-success" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= success %></p>
-        </div>
-      <% } %>
-
-      <% if (message.length > 0) { %>
-        <div class="uk-alert-info" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= message %></p>
-        </div>
-      <% } %>
-
-      <% if (error.length > 0) { %>
-        <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= error %></p>
-        </div>
-      <% } %>
+      <% include ./partials/messages %>
 
       <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
@@ -55,17 +34,14 @@
 
       <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
-          <input class="uk-input" type="submit" name="" value="signup">
+          <input class="uk-input submit-btn" type="submit" name="" value="signup" style="background: #32d296; color: #eee">
         </div>
       </div>
 
     </form>
     <p><small>or</small></p>
-    <button type="button" name="button">login</button>
+    <a class="uk-button uk-button-primary" href="/users/login">login</a>
   </div>
+  <% include ./partials/scripts %>
 </body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/uikit-icons.min.js"></script>
-</script>
-
 </html>

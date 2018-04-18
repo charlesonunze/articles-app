@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Articles</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/uikit.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-</head>
+<% include ./partials/head %>
 
 <body style="font-family: Varela Round">
 
-  <div class="">
-    <p>Articles</p>
-  </div>
+  <% include ./partials/nav %>
 
-  <hr>
+  <br>
   
   <div class="uk-container">
-    <p> <strong><%= article.title %></strong></p>
-    <p> written by <strong><%= article.author %></strong></p>
-    <p><%= article.body %></p>
+    <article class="uk-article">
+        <h1><%= article.title %></h1>
+
+        <p class="uk-article-meta">
+          Written by 
+          <a href="#"><%= article.author %></a>
+        </p>
+
+        <p class="uk-text-lead">
+          <%= article.body %>
+        </p>
+    </article>
   </div>
 
-    <% if (user) {%>
-      <% if (user.username === article.author) {%>
-          <div>
-          <a class="uk-button uk-button-danger" href="#modal-center" uk-toggle>delete article</a>
-          <a href="/article/edit/<%= article._id %>" class="uk-button uk-button-primary">edit article</a>
+  <% if (user) {%>
+    <% if (user.username === article.author) {%>
+        <div style="text-align: center">
+        <a class="uk-button uk-button-danger" href="#modal-center" uk-toggle>delete article</a>
+        <a href="/article/edit/<%= article._id %>" class="uk-button uk-button-primary">edit article</a>
 
-          <div id="modal-center" class="uk-flex-top" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-                <button class="uk-modal-close-default" type="button" uk-close></button>
-                <p>If you delete this article, it cannot be recovered.</p>
+        <div id="modal-center" class="uk-flex-top" uk-modal>
+          <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+              <button class="uk-modal-close-default" type="button" uk-close></button>
+              <p>If you delete this article, it cannot be recovered.</p>
 
-                <a class="uk-button uk-button-primary">cancel</a>
-                <form class="" action="/article/<%= article._id %>" method="post">
-                  <input type="submit" name="" value="delete" class="uk-button uk-button-danger">
-                </form>
-              </div>
+              <form class="" action="/article/<%= article._id %>" method="post">
+                <input type="submit" name="" value="delete" class="uk-button uk-button-danger">
+                <a class="uk-button uk-button-primary uk-modal-close">cancel</a>
+              </form>
             </div>
           </div>
-        <% } %>
+        </div>
       <% } %>
-</body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/uikit-icons.min.js"></script>
+    <% } %>
 
+  <% include ./partials/scripts %>
+</body>
 </html>

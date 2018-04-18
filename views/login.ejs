@@ -1,46 +1,16 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Twitter</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/uikit.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-</head>
+<% include ./partials/head %>
 
 <body style="font-family: Varela Round">
-  <div class="">
-    <p>Twitter Clone</p>
-  </div>
-
-  <hr>
+<br>
 
   <div class="uk-container">
     <p>Log in to Twitter</p>
     <form class="uk-form-controls" action="/users/login" method="post">
 
-      <% if (success.length > 0) { %>
-        <div class="uk-alert-success" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= success %></p>
-        </div>
-      <% } %>
-
-      <% if (message.length > 0) { %>
-        <div class="uk-alert-info" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= message %></p>
-        </div>
-      <% } %>
-
-      <% if (error.length > 0) { %>
-        <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= error %></p>
-        </div>
-      <% } %>
+     <% include ./partials/messages %>
 
       <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
@@ -56,19 +26,13 @@
         </div>
       </div>
 
-      <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
-          <input class="uk-input" type="submit" value="login">
-        </div>
-      </div>
+       <input class="uk-input submit-btn" type="submit" name="" value="login" style="background: #32d296; color: #eee">
 
     </form>
     <p><small>or</small></p>
-    <button type="button" name="button">create new account</button>
+    <a class="uk-button uk-button-primary" href="/users/register">create new account</a>
   </div>
-</body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/uikit-icons.min.js"></script>
-</script>
 
+  <% include ./partials/scripts %>
+</body>
 </html>
